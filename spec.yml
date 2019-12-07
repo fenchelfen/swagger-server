@@ -1,0 +1,57 @@
+swagger: "2.0"
+host: localhost
+info:
+  title: Yoloco Swag
+  version: 0.0.0
+
+basePath: /
+schemes:
+  - http
+
+consumes:
+  - multipart/form-data
+produces:
+  - application/json
+
+paths:
+  /city:
+    post:
+      operationId: get_city_data
+      description: Ask for information on a city
+      parameters:
+        - name: name
+          in: formData # location -- rqst body
+          type: string
+          description: City name
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/CityData'
+        default:
+          description: default stub for an error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  CityData:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      population:
+        type: integer
+        format: int64
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
