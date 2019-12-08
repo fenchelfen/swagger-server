@@ -14,10 +14,10 @@ produces:
   - application/json
 
 paths:
-  /city:
+  /city_name:
     post:
-      operationId: get_city_data
-      description: Ask for information on a city
+      operationId: get_cities_data
+      description: Retrieve information about cities with a given name
       parameters:
         - name: name
           in: formData # location -- rqst body
@@ -41,9 +41,13 @@ definitions:
     properties:
       name:
         type: string
+      country:
+        type: string
       population:
         type: integer
         format: int64
+      postal_code:
+        type: string
   Error:
     type: object
     required:
