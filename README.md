@@ -20,7 +20,7 @@ docker run -d -it -p 80:8080 --rm --name microservice swagger-server
 ```
 
 
-To run the server in your environment, please run the please execute the following from the root directory:
+To run the server in your environment, execute the following from the root directory:
 
 ```console
 pip3 install -r requirements.txt
