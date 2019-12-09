@@ -1,0 +1,65 @@
+---
+swagger: "2.0"
+info:
+  version: "0.0.0"
+  title: "Yoloco"
+host: "localhost"
+basePath: "/"
+schemes:
+- "http"
+consumes:
+- "multipart/form-data"
+produces:
+- "application/json"
+paths:
+  /city_name:
+    post:
+      description: "Retrieve information about cities with a given name"
+      operationId: "get_cities_data"
+      parameters:
+      - name: "name"
+        in: "formData"
+        description: "City name"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CityData"
+        default:
+          description: "default stub for an error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+definitions:
+  CityData:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      country:
+        type: "string"
+      population:
+        type: "integer"
+        format: "int64"
+      postal_code:
+        type: "string"
+    example:
+      country: "country"
+      name: "name"
+      postal_code: "postal_code"
+      population: 0
+  Error:
+    type: "object"
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"

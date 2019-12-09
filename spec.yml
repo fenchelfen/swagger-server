@@ -1,7 +1,7 @@
 swagger: "2.0"
 host: localhost
 info:
-  title: Yoloco Swag
+  title: Yoloco
   version: 0.0.0
 
 basePath: /
