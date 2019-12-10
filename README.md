@@ -23,6 +23,10 @@ docker run -d -it -p 80:8080 --rm --name microservice swagger-server
 To run the server in your environment, execute the following from the root directory:
 
 ```console
+apt install -y redis-server
+service redis-server stop
+redis-server --loadmodule rejson.so --daemonize yes # .so file should be compiled for your platform,
+                                                    # please, refer to the Dockerfile
 pip3 install -r requirements.txt
 python3 -m swagger_server
 ```
@@ -33,7 +37,7 @@ and open your browser to here:
 http://localhost/ui/
 ```
 
-Your Swagger definition lives here:
+Swagger definition lives here:
 
 ```
 http://localhost/swagger.json
